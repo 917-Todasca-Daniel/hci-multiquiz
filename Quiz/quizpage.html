@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="utf-8">
+  <title>HCI Quiz</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+
+  <meta name="theme-color" content="#fafafa">
+  <meta charset="UTF-8">
+  <title>Quiz</title>
+</head>
+<body class="quiz-page">
+  <script>
+    var questionIndex = 0;
+    var questions = [
+      {
+        title: "Alege cercul albastru",
+        correct_index: 0,
+        title_img_src: "image.png",
+        play_sound: "audio/forme geometrice/Blue circle.mp3",
+        options_src: [
+          "img/Blue circle.png", "img/Blue Triangle.png", "img/Red square.png", "img/Yellow circle.png"
+        ]
+      },
+      {
+        title: "Alege triunghiul verde",
+        correct_index: 1,
+        title_img_src: "image.png",
+        play_sound: "audio/forme geometrice/Green triangle.mp3",
+        options_src: [
+          "img/Green Triangle.png", "img/Green circle.png", "img/Yellow square.png", "img/Blue triangle.png"
+        ]
+      },
+      {
+        title: "Alege 2 fructe",
+        correct_index: 1,
+        title_img_src: "image.png",
+        play_sound: "audio/identificare cifre prin elemente/Alege 2 fructe.mp3",
+        options_src: [
+          "img/2 fruits/2 apples.png", "img/2 fruits/2 brocolli.png",
+          "img/2 fruits/2 brocolli.png", "img/2 fruits/4 banans.png"
+        ]
+      }
+    ]
+
+    window.onload = function(e) {
+      moveToQuestion(0);
+    }
+
+    function moveToQuestion(toMove) {
+      questionIndex = toMove;
+      let question = questions[toMove];
+      for (let optIdx=0; optIdx<4; optIdx+=1) {
+        document.getElementById("img-" + (optIdx+1)).src = question.options_src[optIdx];
+        document.getElementById("choice-" + (optIdx+1)).className = "quiz-item";
+      }
+      document.getElementById("title").innerHTML=question.title;
+    }
+
+    function moveToNewQuestion() {
+      moveToQuestion((questionIndex + 1) % questions.length);
+    }
+
+    function clickOnWrongAnswer(choiceNumber) {
+      let choiceDiv = document.getElementById("choice-" + choiceNumber.toString());
+      if (choiceDiv === null) {
+        window.alert("div not found!");
+      }
+      else {
+        choiceDiv.className = "quiz-item wrong-choice";
+      }
+    }
+
+    function clickOnCorrectAnswer(choiceNumber) {
+      document.getElementById("celebration").style.display = "flex";
+      document.getElementById("quiz").style.display = "none";
+      setTimeout(function() {
+        document.getElementById("celebration").style.display = "none";
+        document.getElementById("quiz").style.display = "flex";
+        moveToNewQuestion();
+      }, 500);
+    }
+
+    function clickOnChoice(choiceNumber) {
+      if (choiceNumber === questions[questionIndex].correct_index + 1) {
+        clickOnCorrectAnswer(choiceNumber);
+      }
+      else {
+        clickOnWrongAnswer(choiceNumber);
+      }
+    }
+
+    function playSound()
+    {
+      console.log("Sounds")
+      var audio = new Audio(questions[questionIndex].play_sound);
+      audio.play();
+    }
+  </script>
+
+  <div id="celebration" class="quiz-container success-prompt hide-prompt">
+    mama tata
+    <a href=""><div class="play-button">d</div></a>
+  </div>
+
+
+  <div id="quiz" class="quiz-container">
+    <div class="title-row">
+    <img onclick="playSound()" src="img/playsound.svg" class="playsound-button" alt="My Happy SVG" />
+    <div id="title" class="quiz-title">
+      Alege ce vrei tu
+    </div>
+    </div>
+    <div class="quiz-answers">
+        <div id="choice-1" onclick="clickOnChoice(1)" class="quiz-item">
+          <img id="img-1" class="option-img" src="img/Blue circle.png">
+        </div>
+
+        <div id="choice-2" onclick="clickOnChoice(2)" class="quiz-item">
+          <img id="img-2" class="option-img" src="img/Blue circle.png">
+        </div>
+
+        <div id="choice-3" onclick="clickOnChoice(3)" class="quiz-item">
+          <img id="img-3" class="option-img" src="img/Blue circle.png">
+        </div>
+
+        <div id="choice-4" onclick="clickOnChoice(4)" class="quiz-item">
+          <img id="img-4" class="option-img" src="img/Blue circle.png">
+        </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

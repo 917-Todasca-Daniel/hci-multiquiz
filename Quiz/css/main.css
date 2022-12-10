@@ -261,3 +261,131 @@ textarea {
   }
 }
 
+.main-page {
+  background: aquamarine;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.class-page {
+  background: aquamarine;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 2;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+
+.play-button {
+  margin: 30px;
+  display: flex;
+  flex-basis: 40%;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 30px;
+  padding: 20px;
+  border-radius: 30px;
+  background: #b3d4fc ;
+}
+
+.quiz-page {
+  background: aquamarine;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz-container {
+    width: 80vw;
+    height: 80vh;
+  background: #cccccc;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.quiz-title {
+  /*display: flex;*/
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*width: 70%;*/
+  /*height: 20%;*/
+  font-size: 40px;
+  font-family: playful;
+
+  /*background: red;*/
+}
+
+.quiz-answers {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  height: 70%;
+  justify-content: space-between;
+
+}
+
+.quiz-item {
+  width: 40%;
+  height: 40%;
+  background: white;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  border: 8px solid transparent;
+  margin: 20px;
+}
+
+.quiz-item:hover {
+ background: #b3d4fc;
+  border: 8px solid green;
+}
+
+.wrong-choice {
+  border: 8px solid #ff5664 !important;
+  background-color: rgb(255, 0, 0, 0.1);
+}
+
+.hide-prompt {
+  display: none;
+}
+
+.option-img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+@font-face {
+  font-family: playful;
+  src: url(MouseMemoirs-Regular.ttf);
+}
+
+.playsound-button {
+  width: 50px;
+  padding-right: 30px;
+}
+
+.playsound-button:hover {
+  filter: invert(100%);
+  cursor: pointer;
+}
+
+.title-row
+{
+  display: flex;
+  grid-row: 1;
+}
+
