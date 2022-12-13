@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-
 <head>
   <meta charset="utf-8">
   <title>HCI Quiz</title>
@@ -19,14 +17,22 @@
 
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="rainbow-bg.css">
 
   <meta name="theme-color" content="#fafafa">
   <meta charset="UTF-8">
   <title>Quiz</title>
 </head>
 <body class="quiz-page">
+  <style>
+    body {
+      background: url("Background 2.jpg") no-repeat 0px 0px !important;
+      background-size: 100vw 100vh !important;
+    }
+  </style>
   <script>
     var questionIndex = 0;
+    var NEW_QUESTION_TIME = 1500;
     var questions = [
       {
         title: "Alege cercul albastru",
@@ -39,7 +45,7 @@
       },
       {
         title: "Alege triunghiul verde",
-        correct_index: 1,
+        correct_index: 0,
         title_img_src: "image.png",
         play_sound: "audio/forme geometrice/Green triangle.mp3",
         options_src: [
@@ -48,7 +54,7 @@
       },
       {
         title: "Alege 2 fructe",
-        correct_index: 1,
+        correct_index: 0,
         title_img_src: "image.png",
         play_sound: "audio/identificare cifre prin elemente/Alege 2 fructe.mp3",
         options_src: [
@@ -93,7 +99,7 @@
         document.getElementById("celebration").style.display = "none";
         document.getElementById("quiz").style.display = "flex";
         moveToNewQuestion();
-      }, 500);
+      }, NEW_QUESTION_TIME);
     }
 
     function clickOnChoice(choiceNumber) {
@@ -114,8 +120,7 @@
   </script>
 
   <div id="celebration" class="quiz-container success-prompt hide-prompt">
-    mama tata
-    <a href=""><div class="play-button">d</div></a>
+    <h1>Felicitari!!!!</h1>
   </div>
 
 
