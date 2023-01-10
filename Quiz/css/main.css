@@ -283,17 +283,42 @@ textarea {
 }
 
 
+.play-button-felicitari {
+  border-radius: 100%;
+  flex-basis: 40%;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 200px;
+  top: 400px;
+  left: 50%;
+  transform: translate(-52%, -50%);
+  transition: box-shadow 0.3s ease-in-out;
+  position: absolute;
+}
+
 .play-button {
-  margin: 30px;
+  border-radius: 100%;
   display: flex;
   flex-basis: 40%;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 30px;
-  padding: 20px;
-  border-radius: 30px;
-  background: #b3d4fc;
+  width: 300px;
+  height: 300px;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.play-button:hover {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+.play-button:active {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+.play-button-felicitari:hover {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+.play-button-felicitari:active {
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
 }
 
 .quiz-page {
@@ -325,6 +350,25 @@ textarea {
   font-family: playful;
 
   /*background: red;*/
+}
+
+.bear-gif {
+  position: absolute;
+  bottom: 50px;
+  left: 50px;
+  width: 500px;
+}
+
+.bear-gif-2 {
+  position: absolute;
+  bottom: 70px;
+  right: 50px;
+  width: 500px;
+}
+
+.quiz-title-img {
+  height: 80px;
+  margin-bottom: 20px;
 }
 
 .quiz-answers {
@@ -389,59 +433,38 @@ textarea {
   grid-row: 1;
 }
 
-.play-button {
-  width: 150px;
-  height: 73px;
-  padding: 20px 40px;
-  border-radius: 10px;
-  background-color: #4caf50;
-  color: #fff;
-  font-size: 5vh;
-  font-weight: bold;
-
-}
-
-.play-button:hover {
-  background-color: #3d9240;
-}
-
-.play-button:active {
-  background-color: #357a38;
-}
-
 .choice-button {
-  width: 150px;
-  height: 60px;
-  padding: 20px 40px;
+  width: 350px;
+  height: 230px;
   border-radius: 10px;
-  background-color: #4caf50;
   color: #fff;
   font-size: 3vh;
   font-weight: bold;
   text-align: center;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .choice-button:hover {
-  background-color: #3d9240;
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
 }
 
 .choice-button:active {
-  background-color: #357a38;
+  box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
 }
 
 .quiz-choiches-all {
-  margin-top: 210px;
+  padding-top: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 470px;
+  height: 60vh;
 }
 
 .quiz-choiches-row {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 900px;
+  width: 50vw;
 }
 
 a:link {
