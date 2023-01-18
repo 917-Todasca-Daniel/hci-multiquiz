@@ -77,6 +77,10 @@
         document.getElementById("choice-" + (optIdx+1)).className = "quiz-item";
       }
       document.getElementById("title").innerHTML=question.title;
+      document.getElementById("title").innerHTML=question.title;
+        setTimeout(function() {
+          playSound();
+        }, 100);
     }
 
     function moveToNewQuestion() {
