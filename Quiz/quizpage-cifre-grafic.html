@@ -24,6 +24,7 @@
   <title>Quiz</title>
 </head>
 <body class="quiz-page">
+<a href="classpage.html"><div class="back-arrow" href=""></div></a>
   <style>
     body {
       background: url("Background 2.jpg") no-repeat 0px 0px !important;
@@ -69,6 +70,7 @@
     ]
 
     window.onload = function(e) {
+      shuffleArray(questions);
       moveToQuestion(0);
     }
 
@@ -88,6 +90,7 @@
 
     function moveToNewQuestion() {
       if (questionIndex + 1 === questions.length) {
+        sessionStorage.setItem("quiz4", "done");
         window.location.href="felicitari.html";
         return;
       }

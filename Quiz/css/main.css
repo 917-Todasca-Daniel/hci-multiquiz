@@ -470,3 +470,32 @@ textarea {
 a:link {
   text-decoration: none;
 }
+
+.back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 70px;
+  /*background-color: #ff5664;*/
+  background-image: url("../img/backarrow.png");
+  background-size: 100px 100px;
+}
+
+.back-arrow:hover {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 30px;
+  /*background-color: #ff5664;*/
+  background-image: url("../img/backarrow.png");
+  background-size: 100px 100px;
+}
+
+.green-img {
+  filter: opacity(40%) hue-rotate(120deg);
+  border: 20px black;
+}

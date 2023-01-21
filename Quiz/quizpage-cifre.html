@@ -23,163 +23,171 @@
   <meta charset="UTF-8">
   <title>Quiz</title>
 </head>
-<body class="quiz-page">
-  <style>
-    body {
-      background: url("Background 2.jpg") no-repeat 0px 0px !important;
-      background-size: 100vw 100vh !important;
-    }
-  </style>
-  <script src="confetti.js"></script>
-  <script>
-    var questionIndex = 0;
-    var NEW_QUESTION_TIME = 3500;
-    var skip_audio = false;
-    var questions = [
-      {
-        title: "Alege cifra 1",
-        correct_index: 3,
-        title_img_src: "image.png",
-        play_sound: "audio/identificare cifra prin semn grafic/Alege 1.mp3",
-        options_src: [
-          "img/cifre/7.png", "img/cifre/2.png", "img/cifre/8.png", "img/cifre/1.png"
-        ]
-      },
-      {
-        title: "Alege cifra 7",
-        correct_index: 1,
-        title_img_src: "image.png",
-        play_sound: "audio/identificare cifra prin semn grafic/Alege 7.mp3",
-        options_src: [
-          "img/cifre/1.png", "img/cifre/7.png", "img/cifre/4.png", "img/cifre/5.png"
-        ]
-      },
-      {
-        title: "Alege cifra 4",
-        correct_index: 2,
-        title_img_src: "image.png",
-        play_sound: "audio/identificare cifra prin semn grafic/Alege 4.mp3",
-        options_src: [
-          "img/cifre/5.png", "img/cifre/6.png", "img/cifre/4.png", "img/cifre/5.png"
-        ]
-      }
-    ]
-
-    window.onload = function(e) {
-      moveToQuestion(0);
-    }
-
-    function moveToQuestion(toMove) {
-      questionIndex = toMove;
-      let question = questions[toMove];
-      for (let optIdx=0; optIdx<4; optIdx+=1) {
-        document.getElementById("img-" + (optIdx+1)).src = question.options_src[optIdx];
-        document.getElementById("choice-" + (optIdx+1)).className = "quiz-item";
-      }
-      document.getElementById("title").innerHTML=question.title;
-      document.getElementById("title").innerHTML=question.title;
-        setTimeout(function() {
-          playSound();
-        }, 100);
-    }
-
-    function moveToNewQuestion() {
-      if (questionIndex + 1 === questions.length) {
-        window.location.href="felicitari.html";
-        return;
-      }
-      moveToQuestion((questionIndex + 1) % questions.length);
-    }
-
-    function clickOnWrongAnswer(choiceNumber) {
-      var audio = new Audio("audio/wrong.mp3");
-      audio.play();
-      if (!skip_audio) {
-        if (Math.random() < 0.5) {
-          var audio = new Audio("audio/Mai gandeste te.mp3");
-          audio.play();
-        }
-        else {
-          var audio = new Audio("audio/Mai incearca.mp3");
-          audio.play();
-        }
-        skip_audio = true;
-        setTimeout(function() {
-          skip_audio = false;
-        }, 2000);
-      }
-      let choiceDiv = document.getElementById("choice-" + choiceNumber.toString());
-      if (choiceDiv === null) {
-        window.alert("div not found!");
-      }
-      else {
-        choiceDiv.className = "quiz-item wrong-choice";
-      }
-    }
-
-    function clickOnCorrectAnswer(choiceNumber) {
-      document.getElementById("celebration").style.display = "flex";
-      document.getElementById("quiz").style.display = "none";
-      confetti.start();
-      var audio = new Audio("audio/Felicitari.mp3");
-      audio.play();
-      var audio = new Audio("audio/success.mp3");
-      audio.play();
-      setTimeout(function() {
-        document.getElementById("celebration").style.display = "none";
-        document.getElementById("quiz").style.display = "flex";
-        confetti.stop();
-        moveToNewQuestion();
-      }, NEW_QUESTION_TIME);
-    }
-
-    function clickOnChoice(choiceNumber) {
-      if (choiceNumber === questions[questionIndex].correct_index + 1) {
-        clickOnCorrectAnswer(choiceNumber);
-      }
-      else {
-        clickOnWrongAnswer(choiceNumber);
-      }
-    }
-
-    function playSound()
+<body class="quiz-page"><a href="classpage.html">
+  <div class="back-arrow" href=""></div>
+</a>
+<style>
+  body {
+    background: url("Background 2.jpg") no-repeat 0px 0px !important;
+    background-size: 100vw 100vh !important;
+  }
+</style>
+<script src="confetti.js"></script>
+<script>
+  var questionIndex = 0;
+  var NEW_QUESTION_TIME = 3500;
+  var skip_audio = false;
+  var questions = [
     {
-      console.log("Sounds")
-      var audio = new Audio(questions[questionIndex].play_sound);
-      audio.play();
+      title: "Alege cifra 1",
+      correct_index: 3,
+      title_img_src: "image.png",
+      play_sound: "audio/identificare cifra prin semn grafic/Alege 1.mp3",
+      options_src: [
+        "img/cifre/7.png", "img/cifre/2.png", "img/cifre/8.png", "img/cifre/1.png"
+      ]
+    },
+    {
+      title: "Alege cifra 7",
+      correct_index: 1,
+      title_img_src: "image.png",
+      play_sound: "audio/identificare cifra prin semn grafic/Alege 7.mp3",
+      options_src: [
+        "img/cifre/1.png", "img/cifre/7.png", "img/cifre/4.png", "img/cifre/5.png"
+      ]
+    },
+    {
+      title: "Alege cifra 4",
+      correct_index: 2,
+      title_img_src: "image.png",
+      play_sound: "audio/identificare cifra prin semn grafic/Alege 4.mp3",
+      options_src: [
+        "img/cifre/5.png", "img/cifre/6.png", "img/cifre/4.png", "img/cifre/5.png"
+      ]
     }
-  </script>
+  ]
 
-  <div id="celebration" class="quiz-container success-prompt hide-prompt">
-    <img src="img/btns/trophy.png"/>
-  </div>
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
 
 
-  <div id="quiz" class="quiz-container">
-    <div class="title-row">
-    <img onclick="playSound()" src="img/playsound.svg" class="playsound-button" alt="My Happy SVG" />
+  window.onload = function (e) {
+    shuffleArray(questions);
+    moveToQuestion(0);
+  }
+
+  function moveToQuestion(toMove) {
+    questionIndex = toMove;
+    let question = questions[toMove];
+    for (let optIdx = 0; optIdx < 4; optIdx += 1) {
+      document.getElementById("img-" + (optIdx + 1)).src = question.options_src[optIdx];
+      document.getElementById("choice-" + (optIdx + 1)).className = "quiz-item";
+    }
+    document.getElementById("title").innerHTML = question.title;
+    document.getElementById("title").innerHTML = question.title;
+    setTimeout(function () {
+      playSound();
+    }, 100);
+  }
+
+  function moveToNewQuestion() {
+    if (questionIndex + 1 === questions.length) {
+      sessionStorage.setItem("quiz3", "done");
+      window.location.href = "felicitari.html";
+      return;
+    }
+    moveToQuestion((questionIndex + 1) % questions.length);
+  }
+
+  function clickOnWrongAnswer(choiceNumber) {
+    var audio = new Audio("audio/wrong.mp3");
+    audio.play();
+    if (!skip_audio) {
+      if (Math.random() < 0.5) {
+        var audio = new Audio("audio/Mai gandeste te.mp3");
+        audio.play();
+      } else {
+        var audio = new Audio("audio/Mai incearca.mp3");
+        audio.play();
+      }
+      skip_audio = true;
+      setTimeout(function () {
+        skip_audio = false;
+      }, 2000);
+    }
+    let choiceDiv = document.getElementById("choice-" + choiceNumber.toString());
+    if (choiceDiv === null) {
+      window.alert("div not found!");
+    } else {
+      choiceDiv.className = "quiz-item wrong-choice";
+    }
+  }
+
+  function clickOnCorrectAnswer(choiceNumber) {
+    document.getElementById("celebration").style.display = "flex";
+    document.getElementById("quiz").style.display = "none";
+    confetti.start();
+    var audio = new Audio("audio/Felicitari.mp3");
+    audio.play();
+    var audio = new Audio("audio/success.mp3");
+    audio.play();
+    setTimeout(function () {
+      document.getElementById("celebration").style.display = "none";
+      document.getElementById("quiz").style.display = "flex";
+      confetti.stop();
+      moveToNewQuestion();
+    }, NEW_QUESTION_TIME);
+  }
+
+  function clickOnChoice(choiceNumber) {
+    if (choiceNumber === questions[questionIndex].correct_index + 1) {
+      clickOnCorrectAnswer(choiceNumber);
+    } else {
+      clickOnWrongAnswer(choiceNumber);
+    }
+  }
+
+  function playSound() {
+    console.log("Sounds")
+    var audio = new Audio(questions[questionIndex].play_sound);
+    audio.play();
+  }
+</script>
+
+<div id="celebration" class="quiz-container success-prompt hide-prompt">
+  <img src="img/btns/trophy.png"/>
+</div>
+
+
+<div id="quiz" class="quiz-container">
+  <div class="title-row">
+    <img onclick="playSound()" src="img/playsound.svg" class="playsound-button" alt="My Happy SVG"/>
     <div id="title" class="quiz-title">
       Alege ce vrei tu
     </div>
+  </div>
+  <div class="quiz-answers">
+    <div id="choice-1" onclick="clickOnChoice(1)" class="quiz-item">
+      <img id="img-1" class="option-img" src="">
     </div>
-    <div class="quiz-answers">
-        <div id="choice-1" onclick="clickOnChoice(1)" class="quiz-item">
-          <img id="img-1" class="option-img" src="">
-        </div>
 
-        <div id="choice-2" onclick="clickOnChoice(2)" class="quiz-item">
-          <img id="img-2" class="option-img" src="">
-        </div>
+    <div id="choice-2" onclick="clickOnChoice(2)" class="quiz-item">
+      <img id="img-2" class="option-img" src="">
+    </div>
 
-        <div id="choice-3" onclick="clickOnChoice(3)" class="quiz-item">
-          <img id="img-3" class="option-img" src="">
-        </div>
+    <div id="choice-3" onclick="clickOnChoice(3)" class="quiz-item">
+      <img id="img-3" class="option-img" src="">
+    </div>
 
-        <div id="choice-4" onclick="clickOnChoice(4)" class="quiz-item">
-          <img id="img-4" class="option-img" src="">
-        </div>
+    <div id="choice-4" onclick="clickOnChoice(4)" class="quiz-item">
+      <img id="img-4" class="option-img" src="">
     </div>
   </div>
+</div>
 
 </body>
 

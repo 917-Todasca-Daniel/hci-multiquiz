@@ -34,23 +34,35 @@
     }
   </style>
   <div class="quiz-choiches-all">
-    <div class="quiz-choiches-row">
-      <a href="quizpage.html">
-        <img class="choice-button" src="img/btns/geom.png" />
+    <div  class="quiz-choiches-row">
+      <a  id="quiz1a" href="quizpage.html">
+        <img id="quiz1" class="choice-button" src="img/btns/geom.png" />
       </a>
-      <a href="quizpage-adunari.html">
-        <img class="choice-button" src="img/btns/adunari.png" />
+      <a id="quiz2a" href="quizpage-adunari.html">
+        <img id="quiz2" class="choice-button" src="img/btns/adunari.png" />
       </a>
     </div>
     <div class="quiz-choiches-row">
-      <a href="quizpage-cifre-grafic.html">
-        <img class="choice-button" src="img/btns/cifre-elem.png" />
+      <a  id="quiz3a" href="quizpage-cifre-grafic.html">
+        <img  id="quiz3" class="choice-button" src="img/btns/cifre-elem.png" />
       </a>
-      <a href="quizpage-cifre.html">
-        <img class="choice-button" src="img/btns/cifre-grafic.png" />
+      <a id="quiz4a" href="quizpage-cifre.html">
+        <img id="quiz4" class="choice-button" src="img/btns/cifre-grafic.png" />
       </a>
     </div>
   </div>
 </body>
+<script>
+  window.onload = function(e) {
+    for(let i=1; i<=4; i++) {
+      var id = "quiz" + i.toString();
+      if (sessionStorage.getItem(id) === "done") {
+        document.getElementById(id).classList.add("green-img");
+        document.getElementById(id+"a").style.backgroundColor = 'green';
+      }
+    }
+  }
+
+</script>
 
 </html>
