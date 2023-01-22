@@ -35,19 +35,23 @@
   </style>
   <div class="quiz-choiches-all">
     <div  class="quiz-choiches-row">
-      <a  id="quiz1a" href="quizpage.html">
+      <a  id="quiz1a" class="opt-container" href="quizpage.html">
         <img id="quiz1" class="choice-button" src="img/btns/geom.png" />
+        <img id="quiz1b" class="trophy-win" src="img/btns/trophy.png" />
       </a>
-      <a id="quiz2a" href="quizpage-adunari.html">
+      <a id="quiz2a" class="opt-container" href="quizpage-adunari.html">
         <img id="quiz2" class="choice-button" src="img/btns/adunari.png" />
+        <img id="quiz2b" class="trophy-win" src="img/btns/trophy.png" />
       </a>
     </div>
     <div class="quiz-choiches-row">
-      <a  id="quiz3a" href="quizpage-cifre-grafic.html">
+      <a  id="quiz3a" class="opt-container" href="quizpage-cifre-grafic.html">
         <img  id="quiz3" class="choice-button" src="img/btns/cifre-elem.png" />
+        <img id="quiz3b" class="trophy-win" src="img/btns/trophy.png" />
       </a>
-      <a id="quiz4a" href="quizpage-cifre.html">
+      <a id="quiz4a" class="opt-container" href="quizpage-cifre.html">
         <img id="quiz4" class="choice-button" src="img/btns/cifre-grafic.png" />
+        <img id="quiz4b" class="trophy-win" src="img/btns/trophy.png" />
       </a>
     </div>
   </div>
@@ -59,6 +63,7 @@
       if (sessionStorage.getItem(id) === "done") {
         document.getElementById(id).classList.add("green-img");
         document.getElementById(id+"a").style.backgroundColor = 'green';
+        document.getElementById(id+"b").style.visibility = "visible";
       }
     }
   }

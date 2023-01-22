@@ -283,6 +283,16 @@ textarea {
 }
 
 
+.trophy-win {
+  position: absolute;
+  left: 20px;
+  bottom: -30px;
+  width: 130px;
+} 
+.opt-container {
+  position: relative;
+}
+
 .play-button-felicitari {
   border-radius: 100%;
   flex-basis: 40%;
