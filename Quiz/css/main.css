@@ -288,6 +288,8 @@ textarea {
   left: 20px;
   bottom: -30px;
   width: 130px;
+  visibility: hidden;
+  display: hidden;
 } 
 .opt-container {
   position: relative;
